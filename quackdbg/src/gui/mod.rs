@@ -1,13 +1,15 @@
 mod support;
 mod main_window;
 
+pub mod colors;
+
 mod widgets;
 use widgets::Widget;
 use widgets::console::Console;
 
 pub fn create() {
     let system = support::init(file!());
-    let mut console: Console = Default::default();
+    let mut console = Console::default();
 
     system.main_loop(move |run, ui| {
         main_window::init(&ui);
