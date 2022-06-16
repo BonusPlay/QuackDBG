@@ -7,7 +7,6 @@ use glium::{Display, Surface};
 use imgui::{ClipboardBackend, Context, FontConfig, FontSource, Ui};
 use imgui_glium_renderer::Renderer;
 use imgui_winit_support::{HiDpiMode, WinitPlatform};
-use std::path::Path;
 use std::time::Instant;
 
 pub struct System {
@@ -31,15 +30,11 @@ impl ClipboardBackend for ClipboardSupport {
     }
 }
 
-pub fn init(title: &str) -> System {
-    let title = match Path::new(&title).file_name() {
-        Some(file_name) => file_name.to_str().unwrap(),
-        None => title,
-    };
+pub fn init() -> System {
     let event_loop = EventLoop::new();
     let context = glutin::ContextBuilder::new().with_vsync(true);
     let builder = WindowBuilder::new()
-        .with_title(title.to_owned())
+        .with_title("QuackDBG")
         .with_inner_size(glutin::dpi::LogicalSize::new(1024f64, 768f64));
     let display =
         Display::new(builder, context, &event_loop).expect("Failed to initialize display");
@@ -121,7 +116,7 @@ impl System {
 
                 let gl_window = display.gl_window();
                 let mut target = display.draw();
-                target.clear_color_srgb(0.2, 0.2, 0.2, 1.0);
+                target.clear_color_srgb(0.2, 0.2, 0.2, 0.9);
                 platform.prepare_render(&ui, gl_window.window());
                 let draw_data = ui.render();
                 renderer

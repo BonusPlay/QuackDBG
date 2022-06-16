@@ -1,6 +1,5 @@
-use imgui::*;
-
-pub fn init(ui: &Ui) {
+pub fn init(ui: &imgui::Ui) {
+    use imgui::*;
     Window::new("Hello world")
         .size([300.0, 110.0], Condition::FirstUseEver)
         .build(ui, || {

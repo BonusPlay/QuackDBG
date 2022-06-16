@@ -1,5 +1,7 @@
 pub mod hello;
-pub mod console;
+
+mod console;
+pub use console::Console;
 
 pub trait Widget {
     fn init(&mut self, ui: &imgui::Ui);

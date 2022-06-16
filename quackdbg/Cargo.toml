@@ -5,6 +5,8 @@ edition = "2021"
 
 [dependencies]
 clipboard = "0.5"
+color-eyre = "0.6.1"
+crossbeam = "0.8.1"
 glium = { version = "0.30", default-features = true }
 image = "0.23"
 imgui = { version = "0.8.2", features = ["tables-api"] }
